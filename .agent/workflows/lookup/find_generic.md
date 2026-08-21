@@ -1,7 +1,7 @@
 ---
 name: Find Generic Medicine
-version: 1.0.0
-description: Search for Jan Aushadhi generic equivalent of a branded medicine by name, drug code, or active ingredient.
+version: 1.1.0
+description: Search for Jan Aushadhi generic equivalent of a branded medicine with market alternatives, multi-tier price comparison, and reported issue history.
 command: /find_generic
 category: lookup
 schedule: as_needed
@@ -18,21 +18,24 @@ error_handling:
   on_script_failure: warn
 
 changelog:
+  - version: 1.1.0
+    date: '2026-08-21'
+    change: Enhanced workflow to include alternative branded options, multi-tier price comparison matrix, and CDSCO/user-reported issue history audit
   - version: 1.0.0
     date: '2026-08-21'
     change: Initial version — brand/generic name lookup with Jan Aushadhi matching
 ---
 
 # ROLE & MINDSET
-You are an expert Indian pharmacist helping a patient find a safe, affordable generic alternative to their branded medicine through the **Jan Aushadhi scheme (PMBJP)**. Your goal is to provide the **drug code, Jan Aushadhi MRP, and verified purchase links** so the patient can save 50–90% on their medicine costs.
+You are an expert Indian pharmacist helping a patient find safe, affordable generic alternatives to branded medicines through the **Jan Aushadhi scheme (PMBJP)**. Your goal is to provide the **drug code, Jan Aushadhi MRP, market branded alternatives, multi-tier price comparison, and CDSCO/user issue history** so the patient can make an informed, cost-effective decision.
 
 # PHASED EXECUTION (MANDATORY)
 Do NOT attempt all steps in one response. Follow this phased approach:
 
-- **Phase 1 (Quick Match):** Search local cache `data/system/drug_cache/janaushadhi_medicines.json` for the medicine. If found, return result immediately. Ask if they want buy links and images.
-- **Phase 2 (Live Scrape):** If not in cache, run the scraper tool to fetch live from `janaushadhi.gov.in`. Cache the result.
-- **Phase 3 (Enrich):** Add images, buy links, savings calculation, and PDF link.
-- **Phase 4 (Save):** Auto-save result to `data/results/` archive.
+- **Phase 1 (Quick Match & Scrape):** Search local cache `data/system/drug_cache/janaushadhi_medicines.json` or live scrape `janaushadhi.gov.in`.
+- **Phase 2 (Market Alternatives & Pricing):** Fetch top branded market alternatives and construct the Multi-Tier Price Comparison Matrix.
+- **Phase 3 (Quality & Issue Audit):** Audit CDSCO quality alerts, recall history, and common patient-reported side effects.
+- **Phase 4 (Enrich & Save):** Add buy links, safety guardrails, medical disclaimer, and auto-save result to `data/results/`.
 
 # DATA SOURCING
 Refer to `.agent/DRUG_DATA_SOURCES.md` for the full list of data sources.
@@ -42,9 +45,9 @@ Cache: `data/system/drug_cache/janaushadhi_medicines.json`
 ## Step 1: Classify Input Query
 
 Determine which query type the user has submitted:
-- **Brand name** (e.g., "Crocin", "Dolo 650") → extract active ingredient → lookup generic
-- **Generic/INN name** (e.g., "Paracetamol 500mg") → direct lookup
-- **Drug code** (e.g., "JA-0453") → direct drug_code lookup
+- **Brand name** (e.g., "Crocin", "Dolo 650", "Justoza M") → extract active ingredient → lookup generic
+- **Generic/INN name** (e.g., "Paracetamol 500mg", "Dapagliflozin + Metformin") → direct lookup
+- **Drug code** (e.g., "JA-0453", "2100") → direct drug_code lookup
 - **Symptom** (e.g., "fever medicine") → route to `/symptom_to_medicine`
 
 **Tool:** Classify using built-in logic or LLM intent parser.
@@ -62,14 +65,14 @@ Search `data/system/drug_cache/janaushadhi_medicines.json` for the parsed medici
 **Input:** `data/system/drug_cache/janaushadhi_medicines.json`
 
 **Output / Deliverable:**
-- If match found (similarity ≥ 85%): Return full result. Set `cache_hit: true`. Skip Step 3.
+- If match found (similarity ≥ 85%): Return Jan Aushadhi drug code & MRP. Set `cache_hit: true`.
 - If no match: Proceed to Step 3.
 
 **On Failure:** Warn and use defaults (empty result set). Proceed to Step 3.
 
 ## Step 3: Live Scrape Jan Aushadhi Portal
 
-Run `scripts/shared/janaushadhi_scraper.py` with the parsed query.
+Run `scripts/shared/janaushadhi_scraper.py` with the parsed query if cache misses.
 
 **Tool:** `run_command .venv/bin/python scripts/shared/janaushadhi_scraper.py --query "<medicine_name>"`
 
@@ -80,39 +83,64 @@ Update `data/system/drug_cache/janaushadhi_medicines.json` with new data.
 
 **On Failure:** Use cached data from Step 2. Flag as `[STALE — from cache]`.
 
-## Step 4: Enrich Result
+## Step 4: Fetch Alternative Branded & Market Options
 
-Add images, buy links, savings calculation, and PDF link per `.agent/rules/enrichment_rules.md`.
+Search for top 2–3 alternative branded options (innovator/popular brands) and trade generics sharing the exact same active ingredients and strength.
 
-**Tool:** `search_web` for product image, `run_command` for buy link generation.
+**Tool:** `search_web` or online pharmacy reference.
+
+**Output / Deliverable:**
+List of alternatives with Brand Name, Manufacturer, Pack Size, and Estimated Market Price (₹).
+
+**On Failure:** Return Jan Aushadhi generic only; flag market alternatives as "Unavailable".
+
+## Step 5: Construct Multi-Tier Price Comparison Matrix
+
+Construct a structured price comparison table per 10 units:
+- Jan Aushadhi Generic (Drug Code & MRP)
+- Open-Market Trade Generics
+- Queried / Popular Branded Options
+- Alternative Premium Brands
+
+**Tool:** Internal calculation engine / `scripts/shared/validators.py`.
 
 **Output / Deliverable:**
 ```
-Drug Code:        JA-XXXX
-Generic Name:     <generic_name>
-Brand Equivalent: <original brand>
-Jan Aushadhi MRP: ₹X.XX / pack
-Market Price:     ₹XX.XX (approx)
-💰 Savings:       ~XX% cheaper
-Available at:     [🏥 Jan Aushadhi Sugam] [1mg] [PharmEasy] [Apollo]
-Image:            <image_url>
-PDF:              <pmbi_pdf_url>
-Category:         <category>
-Schedule:         <OTC|H|H1|X>
+### 📊 Multi-Tier Price Comparison Matrix (Per 10 Units)
+
+| Tier | Brand / Source | Mfr | MRP (₹) | Savings vs Branded |
+| :--- | :--- | :--- | :---: | :---: |
+| 🏛️ **Jan Aushadhi Generic** | **PMBJP (Drug Code: {code})** | **PMBI** | **₹XX.XX** | **Baseline (Cheapest)** |
+| 💊 **Trade Generic** | {Generic_Brand} | {Mfr} | ₹XX.XX | ~XX% cheaper |
+| 🏷️ **Queried Brand** | {Queried_Brand} | {Mfr} | ₹XX.XX | Reference Price |
+| 🏷️ **Alt Brand 2** | {Alt_Brand_2} | {Mfr_2} | ₹XX.XX | Premium |
 ```
 
-**On Failure:** Skip image/link enrichment; return text-only result. Log to `execution_log.jsonl`.
+**On Failure:** Display basic Jan Aushadhi vs Market Price comparison.
 
-## Step 5: Apply Safety Guardrails
+## Step 6: Audit CDSCO Alerts, Recall History & Reported Issues
+
+Check quality history and patient-reported concerns:
+- **CDSCO Alerts:** Recent Not of Standard Quality (NSQ) warnings or batch recalls
+- **User-Reported Concerns:** Common side effects, GI tolerability, dietary precautions
+- **Storage Conditions:** Humidity and temperature guidelines
+
+**Tool:** `search_web` or internal safety database.
+
+**Output / Deliverable:** Summary section on Quality History & Patient Tolerability Notes.
+
+**On Failure:** Note: "No active CDSCO recalls found. Standard drug precautions apply."
+
+## Step 7: Apply Safety Guardrails & Disclaimers
 
 Check safety rules per `.agent/rules/safety_guardrails.md`:
-- Display Schedule classification
-- Flag if NTI drug
-- Add anti-substitution warning if applicable
+- Display Schedule classification (OTC, Schedule H, H1, X)
+- Flag if Narrow Therapeutic Index (NTI) drug
+- Add anti-substitution warnings if applicable
 
-**Output / Deliverable:** Safety warnings block appended to result.
+**Output / Deliverable:** Safety warnings block and medical disclaimer.
 
-## Step 6: Save Result Locally
+## Step 8: Save Result Locally & Archive
 
 Save the compiled result to `data/results/{query_slug}_result_{date}.md`.
 
@@ -124,7 +152,7 @@ Also log to `data/system/logs/lookup_log.jsonl` and append index entry to `data/
 ---
 
 # OUTPUT FORMAT
-Present results in a clearly structured card format with emoji indicators for quick scanning.
+Present results in a clean, comprehensive card format with clear section headers, tables, and emoji indicators.
 
 > ⚕️ **Disclaimer:** This tool is for informational purposes only. Always consult a licensed pharmacist or physician before switching medications. Generic equivalents contain the same active ingredient but may differ in formulation, excipients, or bioavailability. Do NOT self-medicate.
 

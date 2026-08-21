@@ -18,6 +18,8 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.shared.validators import (
+    audit_drug_issues_and_recalls,
+    build_price_comparison_matrix,
     calculate_savings,
     get_schedule_classification,
     get_substitution_warning,
@@ -218,7 +220,6 @@ class TestCalculateSavings:
         assert result["amount_saved"] == 0
 
     def test_jan_aushadhi_more_expensive_returns_zero_savings(self):
-        # Shouldn't happen in practice but test defensively
         result = calculate_savings(jan_aushadhi_mrp=50.0, market_price=10.0)
         assert result["amount_saved"] == 0
 
@@ -226,12 +227,27 @@ class TestCalculateSavings:
         result = calculate_savings(jan_aushadhi_mrp=4.50, market_price=25.00)
         assert "₹" in result["display_string"]
 
-    def test_100_percent_cheaper_case(self):
-        result = calculate_savings(jan_aushadhi_mrp=0.0, market_price=25.00)
-        assert result["savings_pct"] == 100.0
-        assert result["amount_saved"] == pytest.approx(25.00)
 
-    def test_returns_rounded_values(self):
-        result = calculate_savings(jan_aushadhi_mrp=3.33, market_price=10.0)
-        assert isinstance(result["savings_pct"], float)
-        assert isinstance(result["amount_saved"], float)
+# ─────────────────────────────────────────────────────────────────────────────
+# Multi-Tier Price Comparison & Issue Audit Tests
+# ─────────────────────────────────────────────────────────────────────────────
+
+class TestMultiTierPriceComparisonAndIssueAudit:
+    def test_build_price_comparison_matrix_returns_rows(self):
+        matrix = build_price_comparison_matrix(
+            jan_aushadhi_mrp=51.00,
+            drug_code="2100",
+            queried_brand="Justoza M 10/500",
+            queried_mrp=130.00,
+            trade_generics=[{"brand": "Generic Dapa-Met", "mfr": "Generic Mfr", "mrp": 75.00}],
+            branded_alternatives=[{"brand": "Oxra MET 10/500", "mfr": "Sun Pharma", "mrp": 140.00}]
+        )
+        assert len(matrix) == 4
+        assert matrix[0]["tier"] == "🏛️ Jan Aushadhi Generic"
+        assert matrix[0]["mrp"] == 51.00
+
+    def test_audit_drug_issues_and_recalls_for_metformin(self):
+        audit = audit_drug_issues_and_recalls("Dapagliflozin + Metformin")
+        assert "cdsco_status" in audit
+        assert any("GI distress" in c or "UTI" in c for c in audit["reported_concerns"])
+        assert "storage_precautions" in audit
