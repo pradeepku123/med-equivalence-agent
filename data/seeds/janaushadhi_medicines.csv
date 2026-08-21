@@ -1,51 +1,34 @@
 drug_code,product_name,generic_name,unit_size,mrp,category,manufacturer,schedule,last_verified
-JA-0001,Paracetamol Tablets IP 500mg,Paracetamol,10 Tablets,4.50,Analgesics & Antipyretics,PMBI-Approved,OTC,2026-08-01
-JA-0002,Paracetamol Tablets IP 650mg,Paracetamol,10 Tablets,5.00,Analgesics & Antipyretics,PMBI-Approved,OTC,2026-08-01
-JA-0003,Ibuprofen Tablets IP 400mg,Ibuprofen,10 Tablets,7.00,Analgesics & Antipyretics,PMBI-Approved,H,2026-08-01
-JA-0004,Aspirin Tablets IP 75mg,Aspirin,10 Tablets,3.50,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0005,Amoxicillin Capsules IP 250mg,Amoxicillin,10 Capsules,19.00,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0006,Amoxicillin Capsules IP 500mg,Amoxicillin,10 Capsules,32.00,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0007,Metformin Tablets IP 500mg,Metformin,10 Tablets,8.00,Anti-Diabetics,PMBI-Approved,H,2026-08-01
-JA-0008,Metformin Tablets IP 1000mg,Metformin,10 Tablets,14.00,Anti-Diabetics,PMBI-Approved,H,2026-08-01
-JA-0009,Atorvastatin Tablets IP 10mg,Atorvastatin,10 Tablets,9.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0010,Atorvastatin Tablets IP 20mg,Atorvastatin,10 Tablets,14.50,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0011,Atorvastatin Tablets IP 40mg,Atorvastatin,10 Tablets,24.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0012,Omeprazole Capsules IP 20mg,Omeprazole,10 Capsules,9.50,Gastrointestinal Agents,PMBI-Approved,H,2026-08-01
-JA-0013,Omeprazole Capsules IP 40mg,Omeprazole,10 Capsules,17.00,Gastrointestinal Agents,PMBI-Approved,H,2026-08-01
-JA-0014,Ranitidine Tablets IP 150mg,Ranitidine,10 Tablets,6.00,Gastrointestinal Agents,PMBI-Approved,H,2026-08-01
-JA-0015,Metronidazole Tablets IP 400mg,Metronidazole,10 Tablets,8.50,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0016,Azithromycin Tablets IP 250mg,Azithromycin,6 Tablets,18.00,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0017,Azithromycin Tablets IP 500mg,Azithromycin,3 Tablets,16.50,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0018,Ciprofloxacin Tablets IP 500mg,Ciprofloxacin,10 Tablets,15.00,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0019,Doxycycline Capsules IP 100mg,Doxycycline,10 Capsules,12.00,Anti-Infectives,PMBI-Approved,H,2026-08-01
-JA-0020,Cetirizine Tablets IP 10mg,Cetirizine,10 Tablets,5.50,Anti-Allergics,PMBI-Approved,OTC,2026-08-01
-JA-0021,Loratadine Tablets 10mg,Loratadine,10 Tablets,6.00,Anti-Allergics,PMBI-Approved,OTC,2026-08-01
-JA-0022,Amlodipine Tablets IP 5mg,Amlodipine,10 Tablets,7.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0023,Amlodipine Tablets IP 10mg,Amlodipine,10 Tablets,12.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0024,Enalapril Tablets IP 5mg,Enalapril,10 Tablets,8.50,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0025,Losartan Tablets IP 50mg,Losartan,10 Tablets,14.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0026,Metoprolol Tablets IP 25mg,Metoprolol,10 Tablets,9.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0027,Metoprolol Tablets IP 50mg,Metoprolol,10 Tablets,14.50,Cardiovascular Agents,PMBI-Approved,H,2026-08-01
-JA-0028,Glibenclamide Tablets IP 5mg,Glibenclamide,10 Tablets,4.50,Anti-Diabetics,PMBI-Approved,H,2026-08-01
-JA-0029,Glimepiride Tablets IP 1mg,Glimepiride,10 Tablets,9.00,Anti-Diabetics,PMBI-Approved,H,2026-08-01
-JA-0030,Glimepiride Tablets IP 2mg,Glimepiride,10 Tablets,15.00,Anti-Diabetics,PMBI-Approved,H,2026-08-01
-JA-0031,Pantoprazole Tablets IP 40mg,Pantoprazole,10 Tablets,9.50,Gastrointestinal Agents,PMBI-Approved,H,2026-08-01
-JA-0032,Domperidone Tablets IP 10mg,Domperidone,10 Tablets,8.00,Gastrointestinal Agents,PMBI-Approved,H,2026-08-01
-JA-0033,Ondansetron Tablets IP 4mg,Ondansetron,10 Tablets,17.00,Gastrointestinal Agents,PMBI-Approved,H,2026-08-01
-JA-0034,Levocetirizine Tablets IP 5mg,Levocetirizine,10 Tablets,11.00,Anti-Allergics,PMBI-Approved,OTC,2026-08-01
-JA-0035,Montelukast Tablets IP 10mg,Montelukast,10 Tablets,28.00,Respiratory Agents,PMBI-Approved,H,2026-08-01
-JA-0036,Salbutamol Tablets IP 4mg,Salbutamol,10 Tablets,5.50,Respiratory Agents,PMBI-Approved,H,2026-08-01
-JA-0037,Theophylline Tablets IP 200mg,Theophylline,10 Tablets,12.00,Respiratory Agents,PMBI-Approved,H,2026-08-01
-JA-0038,Folic Acid Tablets IP 5mg,Folic Acid,10 Tablets,2.00,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0039,Iron & Folic Acid Tablets,Ferrous Sulfate + Folic Acid,10 Tablets,3.50,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0040,Vitamin C Tablets 500mg,Ascorbic Acid,10 Tablets,4.00,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0041,Vitamin B Complex Tablets,Vitamin B Complex,10 Tablets,5.00,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0042,Calcium + Vitamin D3 Tablets,Calcium Carbonate + Vitamin D3,10 Tablets,8.50,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0043,Zinc Sulfate Tablets IP 20mg,Zinc Sulfate,10 Tablets,4.00,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0044,Multivitamin Tablets,Multivitamins,10 Tablets,6.50,Nutraceuticals,PMBI-Approved,OTC,2026-08-01
-JA-0045,Fluconazole Capsules IP 150mg,Fluconazole,1 Capsule,6.00,Anti-Fungals,PMBI-Approved,H,2026-08-01
-JA-0046,Clotrimazole Cream 1%,Clotrimazole,15g Tube,18.00,Anti-Fungals,PMBI-Approved,OTC,2026-08-01
-JA-0047,Betamethasone Cream IP 0.1%,Betamethasone,15g Tube,22.00,Dermatological,PMBI-Approved,H,2026-08-01
-JA-0048,Calamine Lotion IP,Calamine,100ml,18.00,Dermatological,PMBI-Approved,OTC,2026-08-01
-JA-0049,Povidone Iodine Solution 5%,Povidone Iodine,100ml,28.00,Antiseptics,PMBI-Approved,OTC,2026-08-01
-JA-0050,Normal Saline 0.9% (100ml),Sodium Chloride 0.9%,100ml,12.00,IV Fluids,PMBI-Approved,H,2026-08-01
+1,Paracetamol Tablets IP 500mg,Paracetamol,10 Tablets,4.50,Analgesics & Antipyretics,PMBI-Approved,OTC,2026-08-21
+2,Amoxicillin Capsules IP 250mg,Amoxicillin,10 Capsules,19.00,Anti-Infectives,PMBI-Approved,H,2026-08-21
+3,Ibuprofen Tablets IP 400mg,Ibuprofen,10 Tablets,7.00,Analgesics & Antipyretics,PMBI-Approved,H,2026-08-21
+4,Aspirin Tablets IP 75mg,Aspirin,10 Tablets,3.50,Cardiovascular Agents,PMBI-Approved,H,2026-08-21
+5,Amoxicillin Capsules IP 500mg,Amoxicillin,10 Capsules,32.00,Anti-Infectives,PMBI-Approved,H,2026-08-21
+7,Metformin Tablets IP 500mg,Metformin,10 Tablets,8.00,Anti-Diabetics,PMBI-Approved,H,2026-08-21
+8,Metformin Tablets IP 1000mg,Metformin,10 Tablets,14.00,Anti-Diabetics,PMBI-Approved,H,2026-08-21
+9,Atorvastatin Tablets IP 10mg,Atorvastatin,10 Tablets,9.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-21
+10,Atorvastatin Tablets IP 20mg,Atorvastatin,10 Tablets,14.50,Cardiovascular Agents,PMBI-Approved,H,2026-08-21
+12,Omeprazole Capsules IP 20mg,Omeprazole,10 Capsules,9.50,Gastrointestinal Agents,PMBI-Approved,H,2026-08-21
+15,Metronidazole Tablets IP 400mg,Metronidazole,10 Tablets,8.50,Anti-Infectives,PMBI-Approved,H,2026-08-21
+17,Azithromycin Tablets IP 500mg,Azithromycin,3 Tablets,16.50,Anti-Infectives,PMBI-Approved,H,2026-08-21
+18,Ciprofloxacin Tablets IP 500mg,Ciprofloxacin,10 Tablets,15.00,Anti-Infectives,PMBI-Approved,H,2026-08-21
+20,Cetirizine Tablets IP 10mg,Cetirizine,10 Tablets,5.50,Anti-Allergics,PMBI-Approved,OTC,2026-08-21
+22,Amlodipine Tablets IP 5mg,Amlodipine,10 Tablets,7.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-21
+25,Losartan Tablets IP 50mg,Losartan,10 Tablets,14.00,Cardiovascular Agents,PMBI-Approved,H,2026-08-21
+30,Glimepiride Tablets IP 2mg,Glimepiride,10 Tablets,15.00,Anti-Diabetics,PMBI-Approved,H,2026-08-21
+35,Montelukast Tablets IP 10mg,Montelukast,10 Tablets,28.00,Respiratory Agents,PMBI-Approved,H,2026-08-21
+42,Calcium + Vitamin D3 Tablets,Calcium Carbonate + Vitamin D3,10 Tablets,8.50,Nutraceuticals,PMBI-Approved,OTC,2026-08-21
+45,Fluconazole Capsules IP 150mg,Fluconazole,1 Capsule,6.00,Anti-Fungals,PMBI-Approved,H,2026-08-21
+212,Pantoprazole Gastro-resistant Tablets IP 40mg,Pantoprazole 40mg,10 Tablets,14.00,Gastrointestinal,PMBI-Approved,H,2026-08-21
+213,Pantoprazole Injection 40mg,Pantoprazole 40mg Inj,Vial,10.50,Gastrointestinal,PMBI-Approved,H,2026-08-21
+300,Telmisartan Tablets IP 40mg,Telmisartan 40mg,10 Tablets,13.50,Cardiovascular,PMBI-Approved,H,2026-08-21
+315,Fungal Diastase & Pepsin Syrup (200ml),Digestive Enzymes,200ml,38.00,Gastrointestinal,PMBI-Approved,OTC,2026-08-21
+417,Telmisartan 40mg + Amlodipine 5mg Tablets,Telmisartan + Amlodipine,10 Tablets,21.00,Cardiovascular,PMBI-Approved,H,2026-08-21
+418,Rosuvastatin Tablets IP 20mg,Rosuvastatin 20mg,10 Tablets,27.77,Cardiovascular,PMBI-Approved,H,2026-08-21
+465,Pantoprazole 40mg + Domperidone 30mg SR Capsules,Pantoprazole + Domperidone,10 Capsules,28.00,Gastrointestinal,PMBI-Approved,H,2026-08-21
+640,Alpha Lipoic Acid + Methylcobalamin Capsules,Antioxidants,10 Capsules,85.00,Nutraceuticals,PMBI-Approved,OTC,2026-08-21
+812,Methylcobalamin + Pyridoxine + Niacinamide Inj (2ml),Vitamin B Complex Inj,2ml Ampoule,8.50,Nutraceuticals,PMBI-Approved,H,2026-08-21
+1254,Teneligliptin 20mg + Metformin Hydrochloride 500mg SR Tablets,Teneligliptin + Metformin,10 Tablets,27.00,Anti-Diabetics,PMBI-Approved,H,2026-08-21
+1696,Linagliptin Tablets 5mg,Linagliptin 5mg,10 Tablets,22.50,Anti-Diabetics,PMBI-Approved,H,2026-08-21
+2100,Dapagliflozin 10mg + Metformin Hydrochloride (ER) 500mg,Dapagliflozin + Metformin,10 Tablets,51.00,Anti-Diabetics,PMBI-Approved,H,2026-08-21
+2700,Linagliptin 5mg + Metformin 1000mg Tablets,Linagliptin + Metformin,10 Tablets,45.00,Anti-Diabetics,PMBI-Approved,H,2026-08-21

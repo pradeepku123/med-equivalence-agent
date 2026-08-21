@@ -21,6 +21,7 @@ from scripts.shared.validators import (
     audit_drug_issues_and_recalls,
     build_price_comparison_matrix,
     calculate_savings,
+    find_canonical_jan_aushadhi_medicine,
     get_schedule_classification,
     get_substitution_warning,
     is_nti_drug,
@@ -251,3 +252,30 @@ class TestMultiTierPriceComparisonAndIssueAudit:
         assert "cdsco_status" in audit
         assert any("GI distress" in c or "UTI" in c for c in audit["reported_concerns"])
         assert "storage_precautions" in audit
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Canonical Lookup Engine Tests
+# ─────────────────────────────────────────────────────────────────────────────
+
+class TestCanonicalLookup:
+    def test_lookup_pantop_returns_drug_code_212(self):
+        res = find_canonical_jan_aushadhi_medicine("Pantop 40mg")
+        assert res is not None
+        assert res["drug_code"] == "212"
+
+    def test_lookup_linaray_returns_drug_code_1696(self):
+        res = find_canonical_jan_aushadhi_medicine("Linaray-5mg")
+        assert res is not None
+        assert res["drug_code"] == "1696"
+
+    def test_lookup_tazloc_returns_drug_code_300(self):
+        res = find_canonical_jan_aushadhi_medicine("Tazloc 40mg")
+        assert res is not None
+        assert res["drug_code"] == "300"
+
+    def test_lookup_by_exact_code(self):
+        res = find_canonical_jan_aushadhi_medicine("212")
+        assert res is not None
+        assert res["product_name"] == "Pantoprazole Gastro-resistant Tablets IP 40mg"
+

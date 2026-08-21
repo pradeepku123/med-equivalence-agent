@@ -1,14 +1,14 @@
 {
   "metadata": {
     "last_updated": "2026-08-21",
-    "medicine_count": 52,
+    "medicine_count": 33,
     "source": "seed_csv",
     "seed_file": "data/seeds/janaushadhi_medicines.csv",
     "version": "1.0.0"
   },
   "medicines": {
     "Paracetamol Tablets IP 500mg": {
-      "drug_code": "JA-0001",
+      "drug_code": "1",
       "product_name": "Paracetamol Tablets IP 500mg",
       "generic_name": "Paracetamol",
       "unit_size": "10 Tablets",
@@ -17,50 +17,15 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "OTC",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Paracetamol Tablets IP 650mg": {
-      "drug_code": "JA-0002",
-      "product_name": "Paracetamol Tablets IP 650mg",
-      "generic_name": "Paracetamol",
-      "unit_size": "10 Tablets",
-      "mrp": 5.0,
-      "category": "Analgesics & Antipyretics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Ibuprofen Tablets IP 400mg": {
-      "drug_code": "JA-0003",
-      "product_name": "Ibuprofen Tablets IP 400mg",
-      "generic_name": "Ibuprofen",
-      "unit_size": "10 Tablets",
-      "mrp": 7.0,
-      "category": "Analgesics & Antipyretics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Aspirin Tablets IP 75mg": {
-      "drug_code": "JA-0004",
-      "product_name": "Aspirin Tablets IP 75mg",
-      "generic_name": "Aspirin",
-      "unit_size": "10 Tablets",
-      "mrp": 3.5,
-      "category": "Cardiovascular Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Crocin 500",
+        "Dolo 500",
+        "Calpol 500"
+      ]
     },
     "Amoxicillin Capsules IP 250mg": {
-      "drug_code": "JA-0005",
+      "drug_code": "2",
       "product_name": "Amoxicillin Capsules IP 250mg",
       "generic_name": "Amoxicillin",
       "unit_size": "10 Capsules",
@@ -69,11 +34,41 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Amoxil 250",
+        "Mox 250",
+        "Novamox 250"
+      ]
+    },
+    "Ibuprofen Tablets IP 400mg": {
+      "drug_code": "3",
+      "product_name": "Ibuprofen Tablets IP 400mg",
+      "generic_name": "Ibuprofen",
+      "unit_size": "10 Tablets",
+      "mrp": 7.0,
+      "category": "Analgesics & Antipyretics",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": []
+    },
+    "Aspirin Tablets IP 75mg": {
+      "drug_code": "4",
+      "product_name": "Aspirin Tablets IP 75mg",
+      "generic_name": "Aspirin",
+      "unit_size": "10 Tablets",
+      "mrp": 3.5,
+      "category": "Cardiovascular Agents",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Amoxicillin Capsules IP 500mg": {
-      "drug_code": "JA-0006",
+      "drug_code": "5",
       "product_name": "Amoxicillin Capsules IP 500mg",
       "generic_name": "Amoxicillin",
       "unit_size": "10 Capsules",
@@ -82,11 +77,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Metformin Tablets IP 500mg": {
-      "drug_code": "JA-0007",
+      "drug_code": "7",
       "product_name": "Metformin Tablets IP 500mg",
       "generic_name": "Metformin",
       "unit_size": "10 Tablets",
@@ -95,11 +90,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Metformin Tablets IP 1000mg": {
-      "drug_code": "JA-0008",
+      "drug_code": "8",
       "product_name": "Metformin Tablets IP 1000mg",
       "generic_name": "Metformin",
       "unit_size": "10 Tablets",
@@ -108,11 +103,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Atorvastatin Tablets IP 10mg": {
-      "drug_code": "JA-0009",
+      "drug_code": "9",
       "product_name": "Atorvastatin Tablets IP 10mg",
       "generic_name": "Atorvastatin",
       "unit_size": "10 Tablets",
@@ -121,11 +116,15 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Atorva 10",
+        "Lipvas 10",
+        "Storvas 10"
+      ]
     },
     "Atorvastatin Tablets IP 20mg": {
-      "drug_code": "JA-0010",
+      "drug_code": "10",
       "product_name": "Atorvastatin Tablets IP 20mg",
       "generic_name": "Atorvastatin",
       "unit_size": "10 Tablets",
@@ -134,24 +133,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Atorvastatin Tablets IP 40mg": {
-      "drug_code": "JA-0011",
-      "product_name": "Atorvastatin Tablets IP 40mg",
-      "generic_name": "Atorvastatin",
-      "unit_size": "10 Tablets",
-      "mrp": 24.0,
-      "category": "Cardiovascular Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Omeprazole Capsules IP 20mg": {
-      "drug_code": "JA-0012",
+      "drug_code": "12",
       "product_name": "Omeprazole Capsules IP 20mg",
       "generic_name": "Omeprazole",
       "unit_size": "10 Capsules",
@@ -160,37 +146,14 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Omeprazole Capsules IP 40mg": {
-      "drug_code": "JA-0013",
-      "product_name": "Omeprazole Capsules IP 40mg",
-      "generic_name": "Omeprazole",
-      "unit_size": "10 Capsules",
-      "mrp": 17.0,
-      "category": "Gastrointestinal Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Ranitidine Tablets IP 150mg": {
-      "drug_code": "JA-0014",
-      "product_name": "Ranitidine Tablets IP 150mg",
-      "generic_name": "Ranitidine",
-      "unit_size": "10 Tablets",
-      "mrp": 6.0,
-      "category": "Gastrointestinal Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Omez 20",
+        "Omecip 20"
+      ]
     },
     "Metronidazole Tablets IP 400mg": {
-      "drug_code": "JA-0015",
+      "drug_code": "15",
       "product_name": "Metronidazole Tablets IP 400mg",
       "generic_name": "Metronidazole",
       "unit_size": "10 Tablets",
@@ -199,24 +162,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Azithromycin Tablets IP 250mg": {
-      "drug_code": "JA-0016",
-      "product_name": "Azithromycin Tablets IP 250mg",
-      "generic_name": "Azithromycin",
-      "unit_size": "6 Tablets",
-      "mrp": 18.0,
-      "category": "Anti-Infectives",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Azithromycin Tablets IP 500mg": {
-      "drug_code": "JA-0017",
+      "drug_code": "17",
       "product_name": "Azithromycin Tablets IP 500mg",
       "generic_name": "Azithromycin",
       "unit_size": "3 Tablets",
@@ -225,11 +175,14 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Azithral 500",
+        "Azee 500"
+      ]
     },
     "Ciprofloxacin Tablets IP 500mg": {
-      "drug_code": "JA-0018",
+      "drug_code": "18",
       "product_name": "Ciprofloxacin Tablets IP 500mg",
       "generic_name": "Ciprofloxacin",
       "unit_size": "10 Tablets",
@@ -238,24 +191,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Doxycycline Capsules IP 100mg": {
-      "drug_code": "JA-0019",
-      "product_name": "Doxycycline Capsules IP 100mg",
-      "generic_name": "Doxycycline",
-      "unit_size": "10 Capsules",
-      "mrp": 12.0,
-      "category": "Anti-Infectives",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Cetirizine Tablets IP 10mg": {
-      "drug_code": "JA-0020",
+      "drug_code": "20",
       "product_name": "Cetirizine Tablets IP 10mg",
       "generic_name": "Cetirizine",
       "unit_size": "10 Tablets",
@@ -264,24 +204,15 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "OTC",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Loratadine Tablets 10mg": {
-      "drug_code": "JA-0021",
-      "product_name": "Loratadine Tablets 10mg",
-      "generic_name": "Loratadine",
-      "unit_size": "10 Tablets",
-      "mrp": 6.0,
-      "category": "Anti-Allergics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Cetzine 10",
+        "Alerid 10",
+        "Zyrtec 10"
+      ]
     },
     "Amlodipine Tablets IP 5mg": {
-      "drug_code": "JA-0022",
+      "drug_code": "22",
       "product_name": "Amlodipine Tablets IP 5mg",
       "generic_name": "Amlodipine",
       "unit_size": "10 Tablets",
@@ -290,37 +221,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Amlodipine Tablets IP 10mg": {
-      "drug_code": "JA-0023",
-      "product_name": "Amlodipine Tablets IP 10mg",
-      "generic_name": "Amlodipine",
-      "unit_size": "10 Tablets",
-      "mrp": 12.0,
-      "category": "Cardiovascular Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Enalapril Tablets IP 5mg": {
-      "drug_code": "JA-0024",
-      "product_name": "Enalapril Tablets IP 5mg",
-      "generic_name": "Enalapril",
-      "unit_size": "10 Tablets",
-      "mrp": 8.5,
-      "category": "Cardiovascular Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Losartan Tablets IP 50mg": {
-      "drug_code": "JA-0025",
+      "drug_code": "25",
       "product_name": "Losartan Tablets IP 50mg",
       "generic_name": "Losartan",
       "unit_size": "10 Tablets",
@@ -329,63 +234,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Metoprolol Tablets IP 25mg": {
-      "drug_code": "JA-0026",
-      "product_name": "Metoprolol Tablets IP 25mg",
-      "generic_name": "Metoprolol",
-      "unit_size": "10 Tablets",
-      "mrp": 9.0,
-      "category": "Cardiovascular Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Metoprolol Tablets IP 50mg": {
-      "drug_code": "JA-0027",
-      "product_name": "Metoprolol Tablets IP 50mg",
-      "generic_name": "Metoprolol",
-      "unit_size": "10 Tablets",
-      "mrp": 14.5,
-      "category": "Cardiovascular Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Glibenclamide Tablets IP 5mg": {
-      "drug_code": "JA-0028",
-      "product_name": "Glibenclamide Tablets IP 5mg",
-      "generic_name": "Glibenclamide",
-      "unit_size": "10 Tablets",
-      "mrp": 4.5,
-      "category": "Anti-Diabetics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Glimepiride Tablets IP 1mg": {
-      "drug_code": "JA-0029",
-      "product_name": "Glimepiride Tablets IP 1mg",
-      "generic_name": "Glimepiride",
-      "unit_size": "10 Tablets",
-      "mrp": 9.0,
-      "category": "Anti-Diabetics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Glimepiride Tablets IP 2mg": {
-      "drug_code": "JA-0030",
+      "drug_code": "30",
       "product_name": "Glimepiride Tablets IP 2mg",
       "generic_name": "Glimepiride",
       "unit_size": "10 Tablets",
@@ -394,63 +247,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Pantoprazole Tablets IP 40mg": {
-      "drug_code": "JA-0031",
-      "product_name": "Pantoprazole Tablets IP 40mg",
-      "generic_name": "Pantoprazole",
-      "unit_size": "10 Tablets",
-      "mrp": 9.5,
-      "category": "Gastrointestinal Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Domperidone Tablets IP 10mg": {
-      "drug_code": "JA-0032",
-      "product_name": "Domperidone Tablets IP 10mg",
-      "generic_name": "Domperidone",
-      "unit_size": "10 Tablets",
-      "mrp": 8.0,
-      "category": "Gastrointestinal Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Ondansetron Tablets IP 4mg": {
-      "drug_code": "JA-0033",
-      "product_name": "Ondansetron Tablets IP 4mg",
-      "generic_name": "Ondansetron",
-      "unit_size": "10 Tablets",
-      "mrp": 17.0,
-      "category": "Gastrointestinal Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Levocetirizine Tablets IP 5mg": {
-      "drug_code": "JA-0034",
-      "product_name": "Levocetirizine Tablets IP 5mg",
-      "generic_name": "Levocetirizine",
-      "unit_size": "10 Tablets",
-      "mrp": 11.0,
-      "category": "Anti-Allergics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Montelukast Tablets IP 10mg": {
-      "drug_code": "JA-0035",
+      "drug_code": "35",
       "product_name": "Montelukast Tablets IP 10mg",
       "generic_name": "Montelukast",
       "unit_size": "10 Tablets",
@@ -459,89 +260,14 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Salbutamol Tablets IP 4mg": {
-      "drug_code": "JA-0036",
-      "product_name": "Salbutamol Tablets IP 4mg",
-      "generic_name": "Salbutamol",
-      "unit_size": "10 Tablets",
-      "mrp": 5.5,
-      "category": "Respiratory Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Theophylline Tablets IP 200mg": {
-      "drug_code": "JA-0037",
-      "product_name": "Theophylline Tablets IP 200mg",
-      "generic_name": "Theophylline",
-      "unit_size": "10 Tablets",
-      "mrp": 12.0,
-      "category": "Respiratory Agents",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "H",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Folic Acid Tablets IP 5mg": {
-      "drug_code": "JA-0038",
-      "product_name": "Folic Acid Tablets IP 5mg",
-      "generic_name": "Folic Acid",
-      "unit_size": "10 Tablets",
-      "mrp": 2.0,
-      "category": "Nutraceuticals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Iron & Folic Acid Tablets": {
-      "drug_code": "JA-0039",
-      "product_name": "Iron & Folic Acid Tablets",
-      "generic_name": "Ferrous Sulfate + Folic Acid",
-      "unit_size": "10 Tablets",
-      "mrp": 3.5,
-      "category": "Nutraceuticals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Vitamin C Tablets 500mg": {
-      "drug_code": "JA-0040",
-      "product_name": "Vitamin C Tablets 500mg",
-      "generic_name": "Ascorbic Acid",
-      "unit_size": "10 Tablets",
-      "mrp": 4.0,
-      "category": "Nutraceuticals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Vitamin B Complex Tablets": {
-      "drug_code": "JA-0041",
-      "product_name": "Vitamin B Complex Tablets",
-      "generic_name": "Vitamin B Complex",
-      "unit_size": "10 Tablets",
-      "mrp": 5.0,
-      "category": "Nutraceuticals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Singulair 10",
+        "Montek 10"
+      ]
     },
     "Calcium + Vitamin D3 Tablets": {
-      "drug_code": "JA-0042",
+      "drug_code": "42",
       "product_name": "Calcium + Vitamin D3 Tablets",
       "generic_name": "Calcium Carbonate + Vitamin D3",
       "unit_size": "10 Tablets",
@@ -550,37 +276,11 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "OTC",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Zinc Sulfate Tablets IP 20mg": {
-      "drug_code": "JA-0043",
-      "product_name": "Zinc Sulfate Tablets IP 20mg",
-      "generic_name": "Zinc Sulfate",
-      "unit_size": "10 Tablets",
-      "mrp": 4.0,
-      "category": "Nutraceuticals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Multivitamin Tablets": {
-      "drug_code": "JA-0044",
-      "product_name": "Multivitamin Tablets",
-      "generic_name": "Multivitamins",
-      "unit_size": "10 Tablets",
-      "mrp": 6.5,
-      "category": "Nutraceuticals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
     "Fluconazole Capsules IP 150mg": {
-      "drug_code": "JA-0045",
+      "drug_code": "45",
       "product_name": "Fluconazole Capsules IP 150mg",
       "generic_name": "Fluconazole",
       "unit_size": "1 Capsule",
@@ -589,73 +289,172 @@
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
-    "Clotrimazole Cream 1%": {
-      "drug_code": "JA-0046",
-      "product_name": "Clotrimazole Cream 1%",
-      "generic_name": "Clotrimazole",
-      "unit_size": "15g Tube",
-      "mrp": 18.0,
-      "category": "Anti-Fungals",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Betamethasone Cream IP 0.1%": {
-      "drug_code": "JA-0047",
-      "product_name": "Betamethasone Cream IP 0.1%",
-      "generic_name": "Betamethasone",
-      "unit_size": "15g Tube",
-      "mrp": 22.0,
-      "category": "Dermatological",
+    "Pantoprazole Gastro-resistant Tablets IP 40mg": {
+      "drug_code": "212",
+      "product_name": "Pantoprazole Gastro-resistant Tablets IP 40mg",
+      "generic_name": "Pantoprazole 40mg",
+      "unit_size": "10 Tablets",
+      "mrp": 14.0,
+      "category": "Gastrointestinal",
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Pantop 40",
+        "Pan 40",
+        "Pantocid 40",
+        "Pantakind 40"
+      ]
+    },
+    "Pantoprazole Injection 40mg": {
+      "drug_code": "213",
+      "product_name": "Pantoprazole Injection 40mg",
+      "generic_name": "Pantoprazole 40mg Inj",
+      "unit_size": "Vial",
+      "mrp": 10.5,
+      "category": "Gastrointestinal",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
-    "Calamine Lotion IP": {
-      "drug_code": "JA-0048",
-      "product_name": "Calamine Lotion IP",
-      "generic_name": "Calamine",
-      "unit_size": "100ml",
-      "mrp": 18.0,
-      "category": "Dermatological",
+    "Telmisartan Tablets IP 40mg": {
+      "drug_code": "300",
+      "product_name": "Telmisartan Tablets IP 40mg",
+      "generic_name": "Telmisartan 40mg",
+      "unit_size": "10 Tablets",
+      "mrp": 13.5,
+      "category": "Cardiovascular",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Tazloc 40",
+        "Telma 40",
+        "Telmikind 40"
+      ]
+    },
+    "Fungal Diastase & Pepsin Syrup (200ml)": {
+      "drug_code": "315",
+      "product_name": "Fungal Diastase & Pepsin Syrup (200ml)",
+      "generic_name": "Digestive Enzymes",
+      "unit_size": "200ml",
+      "mrp": 38.0,
+      "category": "Gastrointestinal",
       "manufacturer": "PMBI-Approved",
       "schedule": "OTC",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
     },
-    "Povidone Iodine Solution 5%": {
-      "drug_code": "JA-0049",
-      "product_name": "Povidone Iodine Solution 5%",
-      "generic_name": "Povidone Iodine",
-      "unit_size": "100ml",
+    "Telmisartan 40mg + Amlodipine 5mg Tablets": {
+      "drug_code": "417",
+      "product_name": "Telmisartan 40mg + Amlodipine 5mg Tablets",
+      "generic_name": "Telmisartan + Amlodipine",
+      "unit_size": "10 Tablets",
+      "mrp": 21.0,
+      "category": "Cardiovascular",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": []
+    },
+    "Rosuvastatin Tablets IP 20mg": {
+      "drug_code": "418",
+      "product_name": "Rosuvastatin Tablets IP 20mg",
+      "generic_name": "Rosuvastatin 20mg",
+      "unit_size": "10 Tablets",
+      "mrp": 27.77,
+      "category": "Cardiovascular",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Roseday 20",
+        "Rosuvas 20",
+        "Crestor 20"
+      ]
+    },
+    "Pantoprazole 40mg + Domperidone 30mg SR Capsules": {
+      "drug_code": "465",
+      "product_name": "Pantoprazole 40mg + Domperidone 30mg SR Capsules",
+      "generic_name": "Pantoprazole + Domperidone",
+      "unit_size": "10 Capsules",
       "mrp": 28.0,
-      "category": "Antiseptics",
-      "manufacturer": "PMBI-Approved",
-      "schedule": "OTC",
-      "source": "seed_csv",
-      "last_verified": "2026-08-01",
-      "brand_aliases": []
-    },
-    "Normal Saline 0.9% (100ml)": {
-      "drug_code": "JA-0050",
-      "product_name": "Normal Saline 0.9% (100ml)",
-      "generic_name": "Sodium Chloride 0.9%",
-      "unit_size": "100ml",
-      "mrp": 12.0,
-      "category": "IV Fluids",
+      "category": "Gastrointestinal",
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
       "source": "seed_csv",
-      "last_verified": "2026-08-01",
+      "last_verified": "2026-08-21",
       "brand_aliases": []
+    },
+    "Alpha Lipoic Acid + Methylcobalamin Capsules": {
+      "drug_code": "640",
+      "product_name": "Alpha Lipoic Acid + Methylcobalamin Capsules",
+      "generic_name": "Antioxidants",
+      "unit_size": "10 Capsules",
+      "mrp": 85.0,
+      "category": "Nutraceuticals",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "OTC",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": []
+    },
+    "Methylcobalamin + Pyridoxine + Niacinamide Inj (2ml)": {
+      "drug_code": "812",
+      "product_name": "Methylcobalamin + Pyridoxine + Niacinamide Inj (2ml)",
+      "generic_name": "Vitamin B Complex Inj",
+      "unit_size": "2ml Ampoule",
+      "mrp": 8.5,
+      "category": "Nutraceuticals",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": []
+    },
+    "Teneligliptin 20mg + Metformin Hydrochloride 500mg SR Tablets": {
+      "drug_code": "1254",
+      "product_name": "Teneligliptin 20mg + Metformin Hydrochloride 500mg SR Tablets",
+      "generic_name": "Teneligliptin + Metformin",
+      "unit_size": "10 Tablets",
+      "mrp": 27.0,
+      "category": "Anti-Diabetics",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Tenefit M 20",
+        "Ziten M",
+        "Tenepure M"
+      ]
+    },
+    "Linagliptin Tablets 5mg": {
+      "drug_code": "1696",
+      "product_name": "Linagliptin Tablets 5mg",
+      "generic_name": "Linagliptin 5mg",
+      "unit_size": "10 Tablets",
+      "mrp": 22.5,
+      "category": "Anti-Diabetics",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "seed_csv",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Linaray 5mg",
+        "Trajenta 5mg",
+        "Linaford 5mg"
+      ]
     },
     "Dapagliflozin 10mg + Metformin Hydrochloride (ER) 500mg": {
       "drug_code": "2100",
@@ -666,7 +465,7 @@
       "category": "Anti-Diabetics",
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
-      "source": "janaushadhi.gov.in",
+      "source": "seed_csv",
       "last_verified": "2026-08-21",
       "brand_aliases": [
         "Justoza M 10/500",
@@ -674,23 +473,18 @@
         "Oxra MET"
       ]
     },
-    "Amlodipine 5mg + Atenolol 50mg Tablets": {
-      "drug_code": "263",
-      "product_name": "Amlodipine 5mg + Atenolol 50mg Tablets",
-      "generic_name": "Amlodipine + Atenolol",
+    "Linagliptin 5mg + Metformin 1000mg Tablets": {
+      "drug_code": "2700",
+      "product_name": "Linagliptin 5mg + Metformin 1000mg Tablets",
+      "generic_name": "Linagliptin + Metformin",
       "unit_size": "10 Tablets",
-      "mrp": 3.54,
-      "category": "Cardiovascular Agents",
+      "mrp": 45.0,
+      "category": "Anti-Diabetics",
       "manufacturer": "PMBI-Approved",
       "schedule": "H",
-      "source": "janaushadhi.gov.in",
+      "source": "seed_csv",
       "last_verified": "2026-08-21",
-      "brand_aliases": [
-        "Amlip AT",
-        "Amlokind AT",
-        "Amlovas AT",
-        "Amlopress AT"
-      ]
+      "brand_aliases": []
     }
   }
 }

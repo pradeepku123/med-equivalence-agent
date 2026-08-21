@@ -35,3 +35,5 @@ data/system/drug_cache/backups/*.bak
 .vscode/
 .idea/
 *.swp
+
+# Input

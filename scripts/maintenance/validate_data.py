@@ -122,6 +122,7 @@ def run_all_checks() -> int:
         "data/system/schemas",
         "data/results",
         "inputs/prescriptions",
+        "inputs/image",
         "scripts/shared",
         "scripts/maintenance",
         ".agent/workflows/lookup",

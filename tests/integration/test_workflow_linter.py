@@ -12,9 +12,10 @@ from pathlib import Path
 import pytest
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT / ".agent" / "scripts"))
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from agent.scripts.workflow_linter import LintIssue, extract_frontmatter, lint_file
+from workflow_linter import LintIssue, extract_frontmatter, lint_file
 
 
 VALID_WORKFLOW = """\

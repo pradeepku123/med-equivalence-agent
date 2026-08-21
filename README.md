@@ -64,6 +64,7 @@ med-equivalence-agent/
 │   │           └── LOOKUP_INDEX.md        # Index of all past lookups
 │
 ├── inputs/                                 # Raw uploaded files
+│   ├── image/                             # Medicine & prescription image directory (gitignored)
 │   └── prescriptions/                     # User prescription images/PDFs (gitignored)
 │
 ├── scripts/                                # 🐍 Python Execution Engine
@@ -129,8 +130,10 @@ Open this project in your AI coding assistant (e.g., Gemini, Claude, Copilot Wor
 
 ```
 "Find the Jan Aushadhi equivalent of Crocin 650mg"
+"Extract generic details from image in inputs/image/1.jpeg"
+"Scan image directory inputs/image/ and show generic options"
 "What generic fever medicine is available under ₹10?"
-"Scan my prescription" (upload an image)
+"Scan my prescription in inputs/prescriptions/rx.jpg"
 "Lookup drug code JA-0001"
 ```
 
@@ -149,11 +152,11 @@ All workflows are invoked via **slash commands** or natural language. Each is ve
 | `/find_generic` | Find Jan Aushadhi equivalent for any branded medicine. Returns drug code, MRP, savings %, buy links, image, and PDF. | *"Find generic for Crocin"* / *"Paracetamol generic"* |
 | `/symptom_to_medicine` | Find the most affordable Jan Aushadhi medicines for a given symptom, sorted by MRP. | *"Fever medicine under ₹10"* / *"Acidity tablets"* |
 
-### 📋 Prescription
+### 📋 Prescription & Image Scanning
 
 | Command | What It Does | Example Prompt |
 | :--- | :--- | :--- |
-| `/scan_prescription` | Upload a prescription image or PDF → OCR extracts medicine names → auto-finds generic equivalents for each → shows total savings. | *"Scan my prescription"* (upload image) |
+| `/scan_prescription` | Process medicine or prescription images from `inputs/image/` (e.g. `1.jpeg`) or `inputs/prescriptions/` → OCR extracts medicine names → auto-finds Jan Aushadhi generic details, drug codes, verified MRPs, savings %, and buy links. | *"Process image inputs/image/1.jpeg"* / *"Get generic details from inputs/image/"* / *"Scan my prescription"* |
 
 ### 🔄 Data Management
 
@@ -213,22 +216,24 @@ User Query (text / drug code / image / symptom)
 
 ---
 
-## 🤝 Contributing
+## 🤝 Open Source Community & Contributing
 
-We welcome contributions! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR.
+We welcome contributions from developers, pharmacists, healthcare data specialists, and open-source enthusiasts worldwide! Please read our [Contribution Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a PR.
+
+### 🌐 Community Guidelines & Governance
+- 🤝 **[Contribution Guidelines](CONTRIBUTING.md)** — Step-by-step developer setup, workflow standards, and PR requirements.
+- 📜 **[Code of Conduct](CODE_OF_CONDUCT.md)** — Contributor Covenant v2.1 standards for an inclusive community.
+- 🛡️ **[Security & Safety Policy](SECURITY.md)** — Vulnerability reporting and medical data safety guidelines.
+- 💬 **[Support & Q&A](SUPPORT.md)** — Community channels, issue templates, and discussions.
 
 **Quick Contribution Guide:**
-1. Fork the repo
+1. Fork the repository
 2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Make changes & add tests
-4. Run `python .agent/scripts/workflow_linter.py` — all workflows must pass
-5. Run `python -m pytest tests/` — all tests must pass
-6. Open a PR with a clear description
-
-**Adding a New Workflow:**
-- Follow [`.agent/WORKFLOW_STANDARD.md`](.agent/WORKFLOW_STANDARD.md) exactly
-- All 11 linting rules must pass (including R11: medical disclaimer)
-- Place in the correct category subfolder
+3. Make changes & run pre-submission checks:
+   - `python .agent/scripts/workflow_linter.py`
+   - `python scripts/maintenance/validate_data.py`
+   - `python -m pytest tests/`
+4. Open a Pull Request with our [PR Template](.github/PULL_REQUEST_TEMPLATE.md)
 
 ---
 

@@ -30,6 +30,7 @@ except ImportError:
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 PRESCRIPTIONS_DIR = PROJECT_ROOT / "inputs" / "prescriptions"
+IMAGE_DIR = PROJECT_ROOT / "inputs" / "image"
 RESULTS_DIR = PROJECT_ROOT / "data" / "results"
 
 # Common medicine frequency abbreviations seen in Indian prescriptions
@@ -189,11 +190,33 @@ def main() -> int:
     input_path = Path(args.input)
 
     if not input_path.exists():
-        # Try relative to project root
-        input_path = PROJECT_ROOT / args.input
-        if not input_path.exists():
-            print(f"❌ File not found: {args.input}")
+        # Check project root, inputs/image, and inputs/prescriptions
+        candidates = [
+            PROJECT_ROOT / args.input,
+            IMAGE_DIR / args.input,
+            PRESCRIPTIONS_DIR / args.input,
+        ]
+        found = False
+        for candidate in candidates:
+            if candidate.exists():
+                input_path = candidate
+                found = True
+                break
+        if not found:
+            print(f"❌ File or directory not found: {args.input}")
             return 1
+
+    if input_path.is_dir():
+        image_files = sorted([
+            f for f in input_path.glob("*")
+            if f.suffix.lower() in {".jpeg", ".jpg", ".png", ".pdf"}
+        ])
+        if not image_files:
+            print(f"❌ No supported image or PDF files found in directory: {input_path}")
+            return 1
+        rel_display = image_files[0].resolve().relative_to(PROJECT_ROOT.resolve())
+        print(f"📁 Processing first image in directory: {rel_display}")
+        input_path = image_files[0]
 
     # Extract text
     if input_path.suffix.lower() == ".pdf":
