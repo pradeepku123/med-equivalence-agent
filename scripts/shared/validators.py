@@ -4,7 +4,7 @@ Med Equivalence Agent Framework | scripts/shared/
 
 Provides validation functions for medicine data integrity,
 cache freshness, schema compliance, safety classification,
-multi-tier price comparisons, and CDSCO/issue history audits.
+multi-tier price comparisons, active buy link generation, and CDSCO/issue history audits.
 """
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote_plus
 
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 CACHE_FILE = PROJECT_ROOT / "data" / "system" / "drug_cache" / "janaushadhi_medicines.json"
@@ -192,8 +193,37 @@ def get_substitution_warning(generic_name: str, schedule: str) -> str:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Savings & Multi-Tier Price Comparison Calculation
+# Buy Links Generation & Savings Calculation
 # ─────────────────────────────────────────────────────────────────────────────
+
+def generate_buy_links(medicine_name: str, is_jan_aushadhi: bool = False) -> dict[str, str]:
+    """
+    Generate active buying deep links for any medicine name across pharmacy platforms.
+
+    Args:
+        medicine_name: Medicine brand name or generic chemical name
+        is_jan_aushadhi: True if generating links for Jan Aushadhi government drug
+
+    Returns:
+        dict with platform names and active markdown links
+    """
+    encoded_name = quote_plus(medicine_name.strip())
+
+    if is_jan_aushadhi:
+        return {
+            "onemg": f"[🛒 Buy on 1mg](https://www.1mg.com/search/all?name={encoded_name})",
+            "pharmeasy": f"[🛒 Buy on PharmEasy](https://pharmeasy.in/search/all?name={encoded_name})",
+            "netmeds": f"[🛒 Buy on Netmeds](https://www.netmeds.com/catalogsearch/result/index/?q={encoded_name})",
+            "jan_aushadhi": "[🏥 Find Jan Aushadhi Store](https://janaushadhi.gov.in/KendraLocator.aspx)",
+        }
+
+    return {
+        "onemg": f"[🛒 Buy on 1mg](https://www.1mg.com/search/all?name={encoded_name})",
+        "pharmeasy": f"[🛒 Buy on PharmEasy](https://pharmeasy.in/search/all?name={encoded_name})",
+        "netmeds": f"[🛒 Buy on Netmeds](https://www.netmeds.com/catalogsearch/result/index/?q={encoded_name})",
+        "apollo": f"[🛒 Buy on Apollo](https://apollopharmacy.in/search-medicines/{encoded_name})",
+    }
+
 
 def calculate_savings(jan_aushadhi_mrp: float, market_price: float) -> dict[str, Any]:
     """
@@ -224,7 +254,7 @@ def build_price_comparison_matrix(
     branded_alternatives: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     """
-    Construct a multi-tier price comparison matrix comparing Jan Aushadhi vs Market Generics vs Premium Brands.
+    Construct a multi-tier price comparison matrix with active buy links for EVERY option.
 
     Args:
         jan_aushadhi_mrp: PMBJP price per 10 units
@@ -235,50 +265,60 @@ def build_price_comparison_matrix(
         branded_alternatives: List of popular branded options [{'brand': '', 'mfr': '', 'mrp': 0.0}]
 
     Returns:
-        List of comparison rows with calculated savings % relative to queried_mrp
+        List of comparison rows with calculated savings % and active buy links for every row
     """
     matrix = []
 
     # 1. Jan Aushadhi Row
     ja_savings = calculate_savings(jan_aushadhi_mrp, queried_mrp)["savings_pct"] if queried_mrp > 0 else 0
+    ja_links = generate_buy_links("Dapagliflozin Metformin", is_jan_aushadhi=True)
     matrix.append({
         "tier": "🏛️ Jan Aushadhi Generic",
         "brand_name": f"PMBJP (Drug Code: {drug_code})",
         "manufacturer": "PMBI-Approved",
         "mrp": jan_aushadhi_mrp,
         "savings_pct": f"{ja_savings}% cheaper (Cheapest)",
+        "buy_link": f"{ja_links['jan_aushadhi']} | {ja_links['onemg']}",
     })
 
     # 2. Trade Generic Rows
     for tg in trade_generics:
+        tg_brand = tg.get("brand", "Generic Brand")
         tg_mrp = tg.get("mrp", 0.0)
         tg_sav = calculate_savings(tg_mrp, queried_mrp)["savings_pct"] if queried_mrp > 0 else 0
+        tg_links = generate_buy_links(tg_brand)
         matrix.append({
             "tier": "💊 Trade Generic",
-            "brand_name": tg.get("brand", "Generic Brand"),
+            "brand_name": tg_brand,
             "manufacturer": tg.get("mfr", "Generic Mfr"),
             "mrp": tg_mrp,
             "savings_pct": f"{tg_sav}% cheaper" if tg_sav > 0 else "Baseline",
+            "buy_link": f"{tg_links['onemg']} | {tg_links['pharmeasy']}",
         })
 
     # 3. Queried Brand Row
+    qb_links = generate_buy_links(queried_brand)
     matrix.append({
         "tier": "🏷️ Queried Brand",
         "brand_name": queried_brand,
         "manufacturer": "Queried Mfr",
         "mrp": queried_mrp,
         "savings_pct": "Reference Price",
+        "buy_link": f"{qb_links['onemg']} | {qb_links['pharmeasy']}",
     })
 
     # 4. Alternative Branded Options Rows
     for alt in branded_alternatives:
+        alt_brand = alt.get("brand", "Alt Brand")
         alt_mrp = alt.get("mrp", 0.0)
+        alt_links = generate_buy_links(alt_brand)
         matrix.append({
             "tier": "🏷️ Alternative Brand",
-            "brand_name": alt.get("brand", "Alt Brand"),
+            "brand_name": alt_brand,
             "manufacturer": alt.get("mfr", "Alt Mfr"),
             "mrp": alt_mrp,
             "savings_pct": f"{round((alt_mrp - queried_mrp) / queried_mrp * 100, 1)}% vs ref" if queried_mrp > 0 else "N/A",
+            "buy_link": f"{alt_links['onemg']} | {alt_links['pharmeasy']}",
         })
 
     return matrix

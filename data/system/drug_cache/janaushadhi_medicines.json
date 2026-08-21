@@ -1,7 +1,7 @@
 {
   "metadata": {
     "last_updated": "2026-08-21",
-    "medicine_count": 51,
+    "medicine_count": 52,
     "source": "seed_csv",
     "seed_file": "data/seeds/janaushadhi_medicines.csv",
     "version": "1.0.0"
@@ -672,6 +672,24 @@
         "Justoza M 10/500",
         "Xigduo XR",
         "Oxra MET"
+      ]
+    },
+    "Amlodipine 5mg + Atenolol 50mg Tablets": {
+      "drug_code": "263",
+      "product_name": "Amlodipine 5mg + Atenolol 50mg Tablets",
+      "generic_name": "Amlodipine + Atenolol",
+      "unit_size": "10 Tablets",
+      "mrp": 3.54,
+      "category": "Cardiovascular Agents",
+      "manufacturer": "PMBI-Approved",
+      "schedule": "H",
+      "source": "janaushadhi.gov.in",
+      "last_verified": "2026-08-21",
+      "brand_aliases": [
+        "Amlip AT",
+        "Amlokind AT",
+        "Amlovas AT",
+        "Amlopress AT"
       ]
     }
   }
