@@ -1,0 +1,50 @@
+name: Weekly Drug Data Refresh
+
+on:
+  schedule:
+    - cron: '0 2 * * 0'  # Every Sunday at 2 AM UTC
+  workflow_dispatch:      # Allow manual trigger
+
+jobs:
+  refresh:
+    name: Refresh Jan Aushadhi Data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx beautifulsoup4 lxml
+
+      - name: Run data refresh script
+        run: |
+          python scripts/maintenance/seed_database.py --force
+        continue-on-error: true  # Don't fail if scraper is down; use existing seed
+
+      - name: Validate refreshed data
+        run: |
+          python scripts/maintenance/validate_data.py
+
+      - name: Check for data changes
+        id: diff_check
+        run: |
+          git diff --quiet data/system/drug_cache/ || echo "CHANGES=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data if changed
+        if: steps.diff_check.outputs.CHANGES == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Med Agent Data Bot"
+          git add data/seeds/ data/system/drug_cache/
+          git commit -m "chore(data): weekly Jan Aushadhi drug data refresh [auto]"
+          git push

@@ -1,0 +1,130 @@
+name: Med Equivalence Agent CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    name: Framework Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema pytest pytest-cov
+
+      # ─── Step 1: Validate JSON schemas ─────────────────────────────────────
+      - name: Validate JSON files are parseable
+        run: |
+          python -c "
+          import json, glob, sys
+          errors = []
+          for filepath in glob.glob('data/**/*.json', recursive=True):
+              try:
+                  with open(filepath) as f:
+                      json.load(f)
+              except json.JSONDecodeError as e:
+                  errors.append(f'{filepath}: {e}')
+          if errors:
+              for e in errors:
+                  print(f'❌ {e}')
+              sys.exit(1)
+          print(f'✅ All JSON files are valid')
+          "
+
+      # ─── Step 2: Workflow Linter ─────────────────────────────────────────────
+      - name: Lint workflow files
+        run: |
+          python .agent/scripts/workflow_linter.py
+        continue-on-error: true  # Warnings only — don't fail on style warnings
+
+      - name: Check for workflow lint ERRORS (not warnings)
+        run: |
+          python -c "
+          import sys, importlib.util
+          spec = importlib.util.spec_from_file_location('wl', '.agent/scripts/workflow_linter.py')
+          wl = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(wl)
+          from pathlib import Path
+          workflows_dir = Path('.agent/workflows')
+          total_errors = 0
+          for f in workflows_dir.rglob('*.md'):
+              issues = wl.lint_file(f)
+              total_errors += sum(1 for i in issues if i.level == 'error')
+          if total_errors > 0:
+              print(f'❌ {total_errors} workflow linting error(s) found')
+              sys.exit(1)
+          print(f'✅ No workflow linting errors — all {len(list(workflows_dir.rglob(\"*.md\")))} workflows pass')
+          "
+
+      # ─── Step 3: Python Unit Tests ───────────────────────────────────────────
+      - name: Run unit tests
+        run: |
+          python -m pytest tests/unit/ -v --tb=short
+
+      # ─── Step 4: Validate Python scripts syntax ───────────────────────────────
+      - name: Check Python syntax for all scripts
+        run: |
+          find scripts/ .agent/scripts/ -name "*.py" -exec python -m py_compile {} \; && echo "✅ All Python scripts have valid syntax"
+
+      # ─── Step 5: Seed Database and Validate ──────────────────────────────────
+      - name: Seed drug cache from CSV
+        run: |
+          python scripts/maintenance/seed_database.py --force
+
+      - name: Validate seeded drug data
+        run: |
+          python scripts/maintenance/validate_data.py
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install bandit
+        run: pip install bandit
+
+      - name: Run bandit security scan
+        run: |
+          bandit -r scripts/ .agent/scripts/ -ll --skip B101 -q && echo "✅ No security issues found"
+        continue-on-error: true  # Non-blocking for now
+
+  # ─── Notify on success ───────────────────────────────────────────────────────
+  notify:
+    name: CI Summary
+    needs: [validate, security]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Report status
+        run: |
+          if [ "${{ needs.validate.result }}" == "success" ]; then
+            echo "✅ All Med Equivalence Agent framework checks passed!"
+          else
+            echo "❌ One or more checks failed. Review the logs above."
+            exit 1
+          fi

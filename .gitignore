@@ -1,0 +1,37 @@
+# Large binary files — store locally only
+*.pdf
+*.xlsx
+
+# Drug data CSVs (can be large — use seed file instead)
+# Comment out if you want to track CSV in git
+# *.csv
+
+# Temporary files
+.tmp/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.log
+
+# Python virtual environment
+.venv/
+
+# Environment secrets
+.env
+
+# Prescription uploads (privacy)
+inputs/prescriptions/*.jpg
+inputs/prescriptions/*.png
+inputs/prescriptions/*.pdf
+
+# Generated results (too many to track)
+data/results/*.md
+
+# Backup files
+data/system/drug_cache/backups/*.bak
+
+# IDE files
+.vscode/
+.idea/
+*.swp
